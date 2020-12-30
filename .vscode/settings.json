@@ -10,6 +10,13 @@
         "latexmk (pLaTeX)"
       ]
     },
+    // LaTeX(pdfLaTeX) で書かれた文書のビルドレシピ
+    {
+      "name": "pdfLaTeX",
+      "tools": [
+        "latexmk (pdfLaTeX)"
+      ]
+    },
     // LaTeX(upLaTeX) で書かれた文書のビルドレシピ
     {
       "name": "upLaTeX",
@@ -38,6 +45,18 @@
       "name": "latexmk (pLaTeX)",
       "command": "latexmk",
       "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "latexmk (pdfLaTeX)",
+      "command": "latexmk",
+      "args": [
+        "-pdf",
         "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
@@ -92,7 +111,7 @@
   // 使用パッケージのコマンドや環境の補完を有効にする
   "latex-workshop.intellisense.package.enabled": true,
   // デフォルトの使用レシピ
-  "latex-workshop.latex.recipe.default": "pLaTeX",
+  "latex-workshop.latex.recipe.default": "pdfLaTeX",
   // 生成ファイルを削除するときに対象とするファイル
   // デフォルト値に "*.synctex.gz" を追加
   "latex-workshop.latex.clean.fileTypes": [
